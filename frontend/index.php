@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</head>
+<style>
+  body{
+    font-family: 'Inter', sans-serif;
+    background-color: #F8F9Fa;
+  }
+  .card{
+    border: none;
+    background-color: #F8F9Fa;  
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+  }
+  @media screen and (min-width: 360px) and (max-width: 811px){
+    .card {
+      border: none;
+      background-color: #F8F9Fa;
+      box-shadow: none;
+    }
+    .footer a{
+      font-size: 14px;
+    }
+  }
+ 
+  
+</style>
+<body class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="card p-4" style="width: 100%; max-width: 400px;">
+    <h4 class="text-center mb-3">Login</h4>
+    <form id="loginForm">
+      <div class="mb-3">
+        <input type="email" class="form-control" id="email" required placeholder="Email Address" />
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" required placeholder="Password" />
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+    </form>
+
+    <div class="footer d-flex justify-content-between">
+      <a href="register.html" class="btn btn-link p-0">Don't have an account?</a>
+      <a href="#" class="btn btn-link p-0" onclick="openForgotModal()">Forgot password?</a>
+    </div>
+
+    <div id="message" class="mt-3 text-center"></div>
+  </div>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const message = document.getElementById('message');
+
+        fetch('http://127.0.0.1:8000/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+        })
+        .then(response => response.json().then(data => ({ status: response.status, ok: response.ok, body: data })))
+        .then(result => {
+        const data = result.body;
+
+        if (result.ok) {
+            localStorage.setItem('auth_token', data.token);
+            localStorage.setItem('user_role', data.role);
+
+            message.innerHTML = `<span class="text-success">${data.message}</span>`;
+            setTimeout(() => {
+            window.location.href = 'dashboard.php';
+            }, 1000);
+
+        } else {
+            message.innerHTML = `<span class="text-danger">${data.message}</span>`;
+        }
+        })
+        .catch(error => {
+        message.innerHTML = `<span class="text-danger">Error: ${error.message}</span>`;
+        });
+    });
+    </script>
+  </body>
+</html>
