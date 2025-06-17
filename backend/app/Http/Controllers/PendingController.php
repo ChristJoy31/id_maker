@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Student;
+use App\Models\Pending;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class PendingController extends Controller
 {
-     public function store(Request $request)
+      public function store(Request $request)
         {
             try {
                 $request->validate([
@@ -25,7 +25,7 @@ class StudentController extends Controller
                     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                     'qr_code' => 'nullable|string|max:255',
                 ]);
-                    $existing = Student::where('student_id', $request->student_id)->first();
+                    $existing = Pending::where('student_id', $request->student_id)->first();
                     if ($existing) {
                         return response()->json([
                             'message' => 'Student already exists.',
@@ -33,7 +33,7 @@ class StudentController extends Controller
                         ], 409); 
                     }
 
-                $student = Student::create([
+                $student = Pending::create([
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'middle_name' => $request->middle_name,

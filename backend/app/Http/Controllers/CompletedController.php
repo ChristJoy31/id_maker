@@ -1,11 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Student;
+use App\Models\Complete;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class CompletedController extends Controller
 {
+
+    public function index(){
+       $students = Complete::all()->map(function ($student) {
+        $student->full_name = trim("{$student->first_name} {$student->middle_name} {$student->last_name}");
+        return $student;
+    });
+
+    return response()->json($students);
+    }
+
+
      public function store(Request $request)
         {
             try {
@@ -25,7 +36,7 @@ class StudentController extends Controller
                     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                     'qr_code' => 'nullable|string|max:255',
                 ]);
-                    $existing = Student::where('student_id', $request->student_id)->first();
+                    $existing = Complete::where('student_id', $request->student_id)->first();
                     if ($existing) {
                         return response()->json([
                             'message' => 'Student already exists.',
@@ -33,7 +44,7 @@ class StudentController extends Controller
                         ], 409); 
                     }
 
-                $student = Student::create([
+                $student = Complete::create([
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'middle_name' => $request->middle_name,
@@ -64,4 +75,6 @@ class StudentController extends Controller
                 ], 500);
             }
         }
+
+       
 }

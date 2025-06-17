@@ -14,9 +14,11 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123'), // Use bcrypt for password hashing
+            'first_name' => 'Boyet',
+            'last_name' => 'Dedal',
+            'middle_name' => 'Abordo',
+            'email' => 'boyet@gmail.com',
+            'password' => bcrypt('boyet123'), // Use bcrypt for password hashing
         ]);
     }
 }
