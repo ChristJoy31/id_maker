@@ -1,4 +1,8 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php  require_once ('admin-partials/header.php') ?>
+<?php  require_once ('admin-partials/sidebar.php') ?>
+<?php require_once ('admin-partials/js.php') ?>
+
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Notyf CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" />
 <!-- Notyf JS -->
@@ -20,6 +24,13 @@
                             <div class="w-6 h-6 flex items-center justify-center">
                                 <i class="ri-notification-3-line"></i>
                             </div>
+                            <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <button class="relative text-gray-500 hover:text-gray-700">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="absolute top-0 right-0 h-2 w-2 bg-primary rounded-full"></span>
                         </button>
                         <div class="h-6 border-r border-gray-200"></div>
                    <div class="relative flex items-center space-x-2" id="user-dropdown-wrapper">
@@ -47,69 +58,18 @@
                 </div>
                 <div class="px-6 py-2 border-t border-gray-100">
                     <div class="flex items-center text-sm">
-                        <a href="#" class="text-gray-500 hover:text-primary">Employee List</a>
+                        <a href="#" class="text-gray-500 hover:text-primary">Generate ID</a>
                         <div class="w-4 h-4 flex items-center justify-center text-gray-400 mx-1">
                             <i class="ri-arrow-right-s-line"></i>
                         </div>
                         <span class="text-gray-700">Page</span>
                     </div>
                 </div>
-            </header>
-            <div class="p-4">
-               <div class="flex flex-wrap items-center justify-between mb-2">
-                    <div class="text-sm text-gray-500">
-                      
-                    </div>
-             <div class="relative">
-                   <!-- Search Bar -->
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <div class="w-5 h-5 flex items-center justify-center text-gray-400">
-                            <i class="ri-search-line"></i>
-                        </div>
-                    </div>
-                    <input id="search-employee-id"
-                        type="text"
-                        class="bg-gray-50 border border-gray-300 pl-10 pr-4 py-2 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        placeholder="Search employee ID">
-                </div>
-             </div>
-         </div>
+    </header>
 
-           <!-- Employee Table -->
-            <div class="overflow-x-auto mt-4">
-                <table class="min-w-full bg-white rounded-lg shadow">
-                    <thead>
-                        <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                            <th class="py-2 px-4 text-left">Action</th>
-                            <th class="py-2 px-4 text-left">Employee ID</th>
-                            <th class="py-2 px-4 text-left">Full Name</th>
-                            <th class="py-2 px-4 text-left">Position</th>
-                        </tr>
-                    </thead>
-                    <tbody id="employee-table-body" class="text-gray-600 text-sm font-light">
-                        <!-- Rows will be injected here -->
-                    </tbody>
-                </table>
 
-                <div id="pagination-controls" class="flex justify-between items-center mt-2">
-                    <div></div>
-                    <div class="flex items-center space-x-2">
-                        <button id="prev-page" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded">
-                            <i class="ri-arrow-left-s-line text-lg mr-1"></i>
-                        </button>
-                        <span id="page-info" class="text-sm text-gray-600">Page 1 of 1</span>
-                        <button id="next-page" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded">
-                            <i class="ri-arrow-right-s-line text-lg ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+         <script>
+        document.addEventListener("DOMContentLoaded", function () {
         const dropdownBtn = document.getElementById("user-dropdown-btn");
         const dropdownMenu = document.getElementById("user-dropdown-menu");
 
@@ -169,7 +129,7 @@
                             showConfirmButton: false
                         }).then(() => {
                             localStorage.removeItem("auth_token");
-                            window.location.href = "index.php"; 
+                            window.location.href = "index.php"; // redirect to login
                         });
                     })
                     .catch(error => {
@@ -182,7 +142,7 @@
     });
 
 
-    document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
         const token = localStorage.getItem("auth_token");
 
         if (!token) return;
@@ -206,75 +166,4 @@
         });
     });
 
-
-const notyf = new Notyf({
-  duration: 3000,
-  position: { x: 'right', y: 'top' }
-});
-   
-
-
-   document.addEventListener("DOMContentLoaded", () => {
-        const tableBody = document.getElementById("employee-table-body");
-        const searchInput = document.getElementById("search-employee-id");
-        const token = localStorage.getItem("auth_token");
-
-        let employees = []; // Global array to store all data
-
-        // Fetch employee data
-        fetch("http://127.0.0.1:8000/api/employeecomplete", {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + token
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch data");
-            }
-            return response.json();
-        })
-        .then(data => {
-            employees = data; // Save to global
-            renderTable(employees); // Display data
-        })
-        .catch(error => {
-            console.error("Error loading employee data:", error);
-            tableBody.innerHTML = `<tr><td colspan="4" class="py-4 px-4 text-red-500">Failed to load data.</td></tr>`;
-        });
-
-        // Render table function
-        function renderTable(data) {
-            tableBody.innerHTML = ""; // Clear old rows
-
-            data.forEach(employee => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td class="py-2 px-4">
-                        <i class="ri-eye-line text-blue-500 hover:text-blue-700 cursor-pointer text-lg view-icon"></i>
-                    </td>
-                    <td class="py-2 px-4">${employee.employee_id}</td>
-                    <td class="py-2 px-4">${employee.full_name}</td>
-                    <td class="py-2 px-4">${employee.position}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-
-            if (data.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="4" class="py-4 px-4 text-gray-500 text-center">No matching employees found.</td></tr>`;
-            }
-        }
-
-        // Live search
-        searchInput.addEventListener("input", (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = employees.filter(emp =>
-                emp.employee_id.toLowerCase().includes(searchTerm)
-            );
-            renderTable(filtered);
-        });
-    });
-   
-
-</script>
-
+    </script>
