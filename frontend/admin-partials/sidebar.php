@@ -2,8 +2,11 @@
  $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 
 <style>
+      
         .sidebar-dropdown-menu {
             max-height: 0;
             overflow: hidden;
@@ -19,18 +22,56 @@
             transform: rotate(180deg);
         }
 
+        /* ID maker logo */
 
-       
+    .id-maker-animated {
+        display: flex;
+        gap: 6px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        }
+
+        .word {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: riseIn 0.5s forwards;
+        }
+
+        .word.id {
+        animation-delay: 0.2s;
+        color: #2563eb; 
+        }
+
+        .word.maker {
+        animation-delay: 0.6s;
+        color:#2563eb; 
+        }
+
+        @keyframes riseIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .sidebar-dropdown-menu {
+    transition: all 0.3s ease;
+}
+
+
 </style>
-
- 
 <body class="bg-gray-50">
     <div class="flex min-h-screen">
         <aside id="sidebar" class="fixed h-full bg-white shadow-md z-30 transition-all duration-300 w-64">
             <div class="flex flex-col h-full">
-                <div class="p-6 border-b border-gray-100">
-                    <h1 class="text-2xl font-['Pacifico'] text-primary">ID Maker</h1>
+             <div class="p-6 border-b border-gray-100 flex items-center">
+                <img src="assets/img/log.png" alt="Logo" style="width: 50px; margin-right: 10px;">
+                <div class="id-maker-animated">
+                    <span class="word id">ID</span>
+                    <span class="word maker">Maker</span>
                 </div>
+            </div>
                 <nav class="flex-1 py-4 overflow-y-auto custom-scrollbar">
                     <ul class="space-y-1 px-3">
                         <li>
@@ -120,23 +161,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
-                
-                <!-- Bottom section -->
-                <div class="p-4 border-t border-gray-100">
-                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-3">
-                            <i class="ri-user-line"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium">Admin Admin</p>
-                            <p class="text-xs text-gray-500">Administrator</p>
-                        </div>
-                        <div class="w-8 h-8 flex items-center justify-center ml-auto">
-                            <i class="ri-logout-box-line text-gray-400"></i>
-                        </div>
-                    </div>
-                </div>
+                </nav>              
             </div>
         </aside>
 
@@ -154,10 +179,4 @@
                 });
             });
         });
-
-
-
-
-
-  
     </script>

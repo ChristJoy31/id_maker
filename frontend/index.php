@@ -16,13 +16,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :where([class^="ri-"])::before { content: "\f3c2"; }
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f5f7fa;
+        
         }
+  
         
         .form-input {
             transition: border-color 0.3s ease;
@@ -135,14 +138,13 @@
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+       
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8 transition-all duration-300">
+   <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8 transition-all duration-300" style="border-top: 10px solid gray;">
         <div class="text-center mb-8">
-            <h1 class="font-['Pacifico'] text-3xl text-primary mb-1">ID Maker</h1>
-            <h2 class="text-2xl font-bold text-gray-800 mt-6">Welcome</h2>
-            <p class="text-gray-500 mt-2">Please enter your credentials to continue</p>
+            <h1 id="id" class="font-['Poppins'] text-3xl text-primary mb-1">ID Maker</h1>
         </div>
         
         <form id="loginForm" class="space-y-6">

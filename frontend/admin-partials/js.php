@@ -1,34 +1,39 @@
-  <script id="sidebar-toggle-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleSidebarBtn = document.getElementById('toggle-sidebar');
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.querySelector('main');
-            
-            toggleSidebarBtn.addEventListener('click', function() {
-                if (sidebar.classList.contains('w-64')) {
-                    sidebar.classList.remove('w-64');
-                    sidebar.classList.add('w-20');
-                    mainContent.classList.remove('ml-64');
-                    mainContent.classList.add('ml-20');
-                    
-                    // Hide text in sidebar
-                    document.querySelectorAll('.sidebar-link span').forEach(span => {
-                        span.classList.add('hidden');
-                    });
-                } else {
-                    sidebar.classList.remove('w-20');
-                    sidebar.classList.add('w-64');
-                    mainContent.classList.remove('ml-20');
-                    mainContent.classList.add('ml-64');
-                    
-                    // Show text in sidebar
-                    document.querySelectorAll('.sidebar-link span').forEach(span => {
-                        span.classList.remove('hidden');
-                    });
-                }
-            });
+<script id="sidebar-toggle-script">
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleSidebarBtn = document.getElementById('toggle-sidebar');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('main');
+        const idMakerText = document.querySelector('.id-maker-animated'); // << i-add ni
+
+        toggleSidebarBtn.addEventListener('click', function() {
+            if (sidebar.classList.contains('w-64')) {
+                sidebar.classList.remove('w-64');
+                sidebar.classList.add('w-20');
+                mainContent.classList.remove('ml-64');
+                mainContent.classList.add('ml-20');
+
+                // Hide text in sidebar
+                document.querySelectorAll('.sidebar-link span').forEach(span => {
+                    span.classList.add('hidden');
+                });
+
+                // Hide ID Maker text
+                if (idMakerText) idMakerText.classList.add('hidden');
+
+            } else {
+                sidebar.classList.remove('w-20');
+                sidebar.classList.add('w-64');
+                mainContent.classList.remove('ml-20');
+                mainContent.classList.add('ml-64');
+                document.querySelectorAll('.sidebar-link span').forEach(span => {
+                    span.classList.remove('hidden');
+                });
+                if (idMakerText) idMakerText.classList.remove('hidden');
+            }
         });
-    </script>
+    });
+</script>
+
     <script id="charts-init-script">
         document.addEventListener('DOMContentLoaded', function() {
             // Sales Chart

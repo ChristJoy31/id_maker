@@ -24,13 +24,6 @@
                             <div class="w-6 h-6 flex items-center justify-center">
                                 <i class="ri-notification-3-line"></i>
                             </div>
-                            <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
-                        </button>
-                        <button class="relative text-gray-500 hover:text-gray-700">
-                            <div class="w-6 h-6 flex items-center justify-center">
-                                <i class="ri-mail-line"></i>
-                            </div>
-                            <span class="absolute top-0 right-0 h-2 w-2 bg-primary rounded-full"></span>
                         </button>
                         <div class="h-6 border-r border-gray-200"></div>
                    <div class="relative flex items-center space-x-2" id="user-dropdown-wrapper">

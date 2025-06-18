@@ -3,8 +3,6 @@
 <?php require_once ('admin-partials/js.php') ?>
 
 <style>
-    /* From Uiverse.io by alexruix */
-/* From Uiverse.io by alexruix */
 .input {
   line-height: 28px;
   border: 2px solid transparent;
@@ -14,7 +12,7 @@
   background-color: transparent;
   color: #0d0c22;
   transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  width: 250px; /* adjust as needed */
+  width: 250px; 
 }
 
 .input:focus,
@@ -33,13 +31,13 @@
   opacity: 0;
   transition: opacity .3s;
 }
-
+main{
+     
+}
 
 </style>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Notyf CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" />
-<!-- Notyf JS -->
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
        <!-- Main Content -->
         <main class="flex-1 ml-64">
@@ -94,24 +92,27 @@
                     </div>
                 </div>
             </header>
-            <div class="p-4 relative mt-1">
-             <div class="mb-4">
-                <label for="student_id" class="block text-sm font-medium text-gray-700 mb-1">Enter Student ID:</label>
-                <input
+            <div class="p-4 relative mt-1 flex justify-end">
+                <div class="mb-4">
+                    <label for="student_id" class="block text-sm font-medium text-gray-700 mb-1">
+                    Enter Student ID:
+                    </label>
+                    <input
                     type="text"
                     id="student_id"
                     placeholder="e.g. 24-003738"
                     class="input"
                     required
-                >
-                <ul
+                    >
+                    <ul
                     id="student_dropdown"
-                    class="absolute left-6 z-10 mt-0 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden"
-                    style="width: 21%;"
-                ></ul>
-                <p id="student_name" class="mt-1 text-sm text-green-600"></p>
+                    class="absolute z-10 mt-0 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden"
+                    style="width: 250px;"
+                    ></ul>
+                    <p id="student_name" class="mt-1 text-sm text-green-600"></p>
                 </div>
-            </div>
+           </div>
+
     <div class="flex justify-center py-5 px-2">
         <div id="id_template" class="hidden w-full max-w-xl bg-white border rounded-xl shadow-md p-5">
             <h2 id="template_name" class="text-base font-semibold text-gray-800 mb-4 text-center">Name</h2>

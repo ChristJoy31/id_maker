@@ -149,7 +149,36 @@
 .wave-group .input:focus ~ .bar:after {
   width: 50%;
 }
+/* input style */
 
+.input {
+  line-height: 28px;
+  border: 2px solid transparent;
+  border-bottom-color: #777;
+  padding: .2rem 0;
+  outline: none;
+  background-color: transparent;
+  color: #0d0c22;
+  transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 250px; /* adjust as needed */
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  padding: .2rem 1rem;
+  border-radius: 1rem;
+  border-color: #7a9cc6;
+}
+
+.input::placeholder {
+  color: #777;
+}
+
+.input:focus::placeholder {
+  opacity: 0;
+  transition: opacity .3s;
+}
 
 </style>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -209,26 +238,34 @@
                     </div>
                 </div>
             </header>
-          <div class="p-3 relative mt-1">
-                <div class="mb-4">
-                   <label for="employee_name" class="block text-sm font-medium text-gray-700 mb-1">Enter Employee Name:</label>
-                    <input type="text" id="employee_name" placeholder="e.g. Juan Dela Cruz"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
-                    <ul id="employee_dropdown" class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden"></ul>
-                    <p id="employee_name" class="mt-1 text-sm text-green-600"></p>
-                </div>
-            </div>
+       <div class="p-3 relative mt-1 flex justify-end">
+        <div class="mb-4">
+            <label for="employee_name" class="block text-sm font-medium text-gray-700 mb-1">
+              Enter Employee Name:
+            </label>
+            <input
+            type="text"
+            id="employee_name"
+            placeholder="e.g. Jaevoy Palautog"
+            class="input"
+            required
+            >
+            <ul
+            id="employee_dropdown"
+            class="absolute z-10 mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden"
+            style="width: 250px;"
+            ></ul>
+            <p id="employee_name_result" class="mt-1 text-sm text-green-600"></p>
+        </div>
+        </div>
+
 
         <div class="flex justify-center py-4 px-2">
     <div id="id_template" class="hidden w-full max-w-xl bg-white border rounded-xl shadow-md p-6">
-        <!-- Name + QR side by side -->
         <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-4">
-            <!-- QR Code -->
             <div class="flex-shrink-0">
                 <img id="qr_image" src="" alt="QR Code" class="w-28 h-28 rounded border shadow-sm" />
             </div>
-
-            <!-- Info -->
             <div class="text-gray-700 text-sm space-y-1">
                 <h4 id="template_name" class="text-base font-semibold text-gray-800">Employee Name</h4>
                 <p><span id="template_address"></span></p>
