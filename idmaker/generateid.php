@@ -178,7 +178,7 @@ main{
                         return;
                     }
 
-                    fetch("http://127.0.0.1:8000/api/logout", {
+                    fetch("http:/idmakerbackend.test/api/logout", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -216,7 +216,7 @@ main{
 
         if (!token) return;
 
-        fetch("http://127.0.0.1:8000/api/profile", {
+        fetch("http://idmakerbackend.test/api/profile", {
             method: "GET",
             headers: {
             "Authorization": `Bearer ${token}`,
@@ -354,7 +354,7 @@ document.getElementById("save_button").addEventListener("click", async () => {
     };
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/store", {
+        const response = await fetch("http://idmakerbackend.test/api/store", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

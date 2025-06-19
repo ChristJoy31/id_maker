@@ -59,9 +59,140 @@
                     </div>
                 </div>
     </header>
+            <!-- Main Content -->
+     
+ <div class="id-wrapper">
+    <!-- FRONT SIDE -->
+
+<div class="id front">
+  <div class="front-bg"></div>
+  <div class="id-left">
+    <img src="assets/photos/mlg.png" class="logo" alt="Logo">
+    <div class="school-info">
+      <span class="school-name">MLG COLLEGE<br>OF LEARNING, INC</span>
+      <span class="school-address">Brgy. Atabay, Hilongos, Leyte</span>
+    </div>
+    <img src="assets/photos/qr.png" class="qr" alt="QR Code">
+    <img src="assets/photos/signature.png" class="signature" alt="Signature">
+  </div>
+  <img src="assets/photos/sampleid.jpg" class="student-img" alt="Student Photo">
+  <div class="bottom-content">
+    <div class="name-block">
+      <div class="name">KISTADIO<br><span>JHON BRIX P.</span></div>
+      <div class="info-row">
+        <div class="info-row-child">
+          <span class="label">Date of Birth:</span>
+          <span class="value">09/04/2000</span>
+        </div>
+        <div class="info-row-child">
+          <br><span class="address">Brgy. Atabay, Hilongos</span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="id-row">
+      <span class="student-id">21-003149</span>
+      <span class="course">BSED-SS</span>
+    </div>
+    <div class="footer">
+      <span>https://mlgcl.edu.ph</span>
+      <span>mlg@mlgcl.edu.ph</span>
+    </div>
+  </div>
+</div>
+
+<!-- BACK SIDE -->
+    <div class="id back">
+        <div class="id-card-back back-top">
+            <div class="left-content">
+                <div class="left-bar year-strip">
+                    <table>
+                        <tr>
+                        <td class="word-school-year"></td>
+                        <td class="year-cell"><div class="rotated-text">2024-2025</div></td>
+                        <td class="empty-cell"></td>
+                        <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                        <td class="word-school-year"></td>
+                        <td class="year-cell"><div class="rotated-text">2023-2024</div></td>
+                        <td class="empty-cell"></td>
+                        <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                        <td class="word-school-year"><div class="rotated-text">SCHOOL YEAR</div></td>
+                        <td class="year-cell"><div class="rotated-text">2022-2023</div></td>
+                        <td class="empty-cell"></td>
+                        <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                        <td class="word-school-year"></td>
+                        <td class="year-cell"><div class="rotated-text">2021-2022</div></td>
+                        <td class="empty-cell"></td>
+                        <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                        <td class="word-school-year"></td>
+                        <td class="semester-cell"><div class="rotated-text">Semester</div></td>
+                        <td class="first-cell"><div class="rotated-text">First</div></td>
+                        <td class="second-cell"><div class="rotated-text">Second</div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content right-content">
+                <div class="top-text">
+                    This is to certify that the person<br>
+                    whose picture and signature appear<br>
+                    herein is a bonafide student of<br>
+                    <b>MLC College of Learning, Inc.</b>
+                </div>
+
+                <div class="back-signature">
+                    <img src="assets/photos/signature.png" alt="Signature" style="height:24px; margin-bottom:2px;">
+                    <div class="signature-name">MARY LILIBETH OUYAN, DEV. ED. D.</div>
+                    <div>School Director</div>
+                </div>
+
+                <div class="reminders">
+                    <b>IMPORTANT REMINDERS</b><br>
+                    Always wear this ID while inside<br>
+                    the school campus.<br>
+                    <b>Do not forget your<br>
+                    STUDENT ID NUMBER.</b>
+                </div>
+
+                <div class="contact">
+                    If lost and found, please surrender<br>
+                    this ID to the<br>
+                    <b>STUDENT AFFAIRS OFFICE</b>,<br>
+                    MLC College of Learning, Inc.,<br>
+                    Brgy. Atabay, Hilongos, Leyte
+                </div>
+
+                <div class="contact">
+                    In case of emergency,<br>
+                    please contact
+                    <div class="contact-name">EFREN IBAÑEZ</div>
+                    <div class="contact-number">0935-121-9395</div>
+                </div>
+
+                <div class="qr-box">
+                    PLEASE SCAN THE QR<br>
+                    CODE AT THE FRONT<br>
+                    FOR MORE VALIDATION &<br>
+                    CONTACT INFORMATION.
+                </div>
+            </div>
+        </div>
+        <div class="facebook-footer back-bottom">
+            https://www.facebook.com/mlgcl/
+        </div>
+</div>
 
 
-         <script>
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
         const dropdownBtn = document.getElementById("user-dropdown-btn");
         const dropdownMenu = document.getElementById("user-dropdown-menu");
@@ -102,7 +233,7 @@
                         return;
                     }
 
-                    fetch("http://127.0.0.1:8000/api/logout", {
+                    fetch("http://idmakerbackend.test/api/logout", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -140,7 +271,7 @@
 
         if (!token) return;
 
-        fetch("http://127.0.0.1:8000/api/profile", {
+        fetch("http://idmakerbackend.test/api/profile", {
             method: "GET",
             headers: {
             "Authorization": `Bearer ${token}`,

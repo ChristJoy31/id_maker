@@ -209,7 +209,7 @@
                         return;
                     }
 
-                    fetch("http://127.0.0.1:8000/api/logout", {
+                    fetch("http://idmakerbackend.test/api/logout", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -247,7 +247,7 @@
 
         if (!token) return;
 
-        fetch("http://127.0.0.1:8000/api/profile", {
+        fetch("http://idmakerbackend.test/api/profile", {
             method: "GET",
             headers: {
             "Authorization": `Bearer ${token}`,
@@ -280,7 +280,7 @@ const notyf = new Notyf({
     let allStudents = [];
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/complete", {
+        const response = await fetch("http://idmakerbackend.test/api/complete", {
             method: "GET",
             headers: {
                 "Accept": "application/json",

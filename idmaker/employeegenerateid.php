@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-                    fetch("http://127.0.0.1:8000/api/logout", {
+                    fetch("http://idmakerbackend.test/api/logout", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!token) return;
 
-        fetch("http://127.0.0.1:8000/api/profile", {
+        fetch("http://idmakerbackend.test/api/profile", {
             method: "GET",
             headers: {
             "Authorization": `Bearer ${token}`,
@@ -537,7 +537,7 @@ document.getElementById("save_button").addEventListener("click", async () => {
             qr: emp.qr_code || ''
             };
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/employee-store", {
+        const response = await fetch("http://idmakerbackend.test/api/employee-store", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

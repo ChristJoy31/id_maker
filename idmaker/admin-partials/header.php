@@ -6,6 +6,7 @@
     <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>tailwind.config={theme:{extend:{colors:{primary:'#2196F3',secondary:'#F5F5F5'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="stylesheet" href="assets/css/ids.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">

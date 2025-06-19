@@ -38,12 +38,12 @@
         animation: riseIn 0.5s forwards;
         }
 
-        .word.id {
+        .word-id {
         animation-delay: 0.2s;
         color: #2563eb; 
         }
 
-        .word.maker {
+        .word-maker {
         animation-delay: 0.6s;
         color:#2563eb; 
         }
@@ -68,8 +68,8 @@
              <div class="p-6 border-b border-gray-100 flex items-center">
                 <img src="assets/img/log.png" alt="Logo" style="width: 50px; margin-right: 10px;">
                 <div class="id-maker-animated">
-                    <span class="word id">ID</span>
-                    <span class="word maker">Maker</span>
+                    <span class="word-id">ID</span>
+                    <span class="word-maker">Maker</span>
                 </div>
             </div>
                 <nav class="flex-1 py-4 overflow-y-auto custom-scrollbar">
